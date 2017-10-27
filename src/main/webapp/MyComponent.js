@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
+import MyAppBar from './container/MyAppBar.jsx';
 import Typography from 'material-ui/Typography';
+import Card, {CardHeader, CardMedia, CardContent} from 'material-ui/Card';
+import {JobCard} from './components/job';
+import Grid from 'material-ui/Grid';
+import moment from 'moment';
 import ListSubheader from 'material-ui/List/ListSubheader';
 import List, {ListItem, ListItemText} from 'material-ui/List';
 
@@ -9,7 +12,8 @@ class MyComponent extends Component {
   constructor() {
     super();
     this.state = {
-      users: []
+      users: [],
+      jobs: []
     };
   }
 
@@ -31,7 +35,7 @@ class MyComponent extends Component {
       child = (<Typography color="error">An error occured</Typography>);
     } else {
       child = (<List>
-        <ListSubheader>Here are some users:</ListSubheader>
+        <ListSubheader disableSticky>Here are some users:</ListSubheader>
         {
           this.state.users.map((user, idx) => (
             <ListItem key={idx} button>
@@ -44,14 +48,19 @@ class MyComponent extends Component {
 
     return (
       <div>
-        <AppBar position="static" color="primary">
-          <Toolbar>
-            <Typography type="title" color="inherit">
-              Hello World
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        {child}
+        <MyAppBar/>
+        <Grid container gutter={24} justify="center" style={{marginTop: "72px"}}>
+          <Grid item xs={10}>
+            {child}
+          </Grid>
+          {
+            this.props.jobs.map((job, idx) => (
+              <Grid item xs={10} key={idx}>
+                <JobCard {...job}/>
+              </Grid>
+            ))
+          }
+        </Grid>
       </div>
     );
   }

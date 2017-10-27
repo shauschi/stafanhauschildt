@@ -12,7 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   context: __dirname,
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./src/main/webapp/App.js",
+  entry: "./src/main/webapp/index.js",
   devServer: {
     inline: true,
     port: 3333
