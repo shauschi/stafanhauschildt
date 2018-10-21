@@ -1,10 +1,18 @@
-const baseURL = 'http://127.0.0.1:8080';
+'use strict';
+import SignalIduna from './SignalIduna.jsx';
+import FreyRaum from './FreyRaum.jsx';
+import Berenberg from './Berenberg.jsx';
+import BornholdtLee from './BornholdtLee.jsx';
+import Hansetrans from './Hansetrans.jsx';
+import Bsb from './Bsb.jsx';
+import Pdv from './Pdv.jsx';
 
-export const getJobList = () => {
-  return fetch(`${baseURL}/jobs`)
-    .then(response => {
-      if (!response.ok)
-        throw new Error('Response not ok');
-      return response.json()
-    });
-};
+export const jobs = [
+  SignalIduna,
+  FreyRaum,
+  Berenberg,
+  BornholdtLee,
+  Hansetrans,
+  Bsb,
+  Pdv,
+];
